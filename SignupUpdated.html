@@ -1,12 +1,17 @@
+<!DOCTYPE html>
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <title> Sign Up </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="projectcss.css">
     <link rel="icon" href="CollReach.PNG" type="image/x-icon">
     <style>
 	body{
-		background-color : #202020;
-		color: white;
+		
 	}
 	</style>
 </head>
@@ -318,107 +323,230 @@
 		}
 		
     </script>
-    <h2>
-        <center>Register Yourself</center>
-    </h2>
-    <form name = "reg" method="post" action = "#">
+ <section class="shadow p-3 mb-5 bg-white rounded" id="heading">
+        
+        <img src="CollReach.PNG" class="img-circle" alt="collreach logo"><img>
+        <h2>
+            Register Yourself
+        </h2>
+    </section> 
 
-        <label for="name">Name:</label>
-        <br>
-        <input type="text" id="name" name="name">
-        <br>
-		
-        <label for="libid">Lib.Id:</label>
-        <br>
-        <input type="text" id="libid" name="libid" onchange = "validateUserName()">
-        <br>
-		<p id = "usernameValidation" style = "display: none;"></p>
-		
-        <label for="email">Email:</label>
-        <br>
-        <input type="text" id="email" name="email" onchange = "validateKietemail()">
-        <br>
-		<p id = "emailValidation" style = "display: none;"></p>
-        
-        <label for="course">Course:</label>
-        <br>
-        <select name="course" id="course">
-            <option value="blank"></option>
-            <option value="B.tech">B.tech</option>
-            <option value="B.Pharma">B.pharma</option>
-            <option value="MCA">MCA</option>
-            <option value="M.tech">M.tech</option>
-            <option value="MBA">MBA</option>
-        </select>
-        <br>
-		
-        <label for="branch">Branch:</label>
-        <br>
-        <select name="branch" id="branch">
-            <option value="blank"></option>
-            <option value="CSE">CSE</option>
-            <option value="CO">CO</option>
-            <option value="CSI">CSI</option>
-            <option value="IT">IT</option>
-            <option value="ECE">ECE</option>
-            <option value="ME">ME</option>
-            <option value="EN">EN</option>
-            <option value="CE">CE</option>
-            <option value="EIE">EIE</option>
-            <option value="Other">Other</option>
-        </select>
-        <br>
-        <label for="year">Year of study:</label>
-        <br>
-        <select name="year" id="year">
-            <option value="none"></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-        </select>
-        <br>
-		
-        <label for="sem">Semester:</label>
-        <br>
-        <select name="sem" id="sem">
-            <option value="none"></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-        </select>
-        <br>
-		
-        <label for="phone">PhoneNo.(optional)</label>
-        <br>
-        <input type="text" id="phone" name="phone" onchange="validatePhoneNumber()">
-        <br>
-		<p id = "phoneNovalidation" style = "display: none;"></p>
-        
-        <label for="oemail">Personal Mail(optional)</label>
-        <br>
-        <input type="text" id="oemail" name="oemail" onchange="validateAlternateEmail()">
-        <br>
-		<p id = "alternateEmailvalidation" style = "display: none;"></p>
-        
-        <label for="pass">Create Password:</label>
-        <br>
-        <input type="password" id="pass" name="pass" required>
-        <br>
-		
-        <label for="confirm">Confirm Password:</label>
-        <br>
-        <input type="password" id="confirm" name="confirm">
-        <br>
-		
-        <br>
-        <input type="button" value="submit" onclick = "check()">
-        <button type="reset" value="Reset">Reset</button>
-    </form>
+    
+<div  class="container-fluid" >
+    
+
+        <form name = "reg" method="post" action = "#">
+            <div class="row">
+                     <div class="col-lg-4 col-md-6">   
+
+
+                      <label  class="required" for="email" >Email:</label>
+                       
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                          <input class="form-control" type="text" id="email" name="email" size="35" placeholder="email(abc.1822cs0001@kiet.edu)" onchange = "validateKietemail()" required>
+                        </div>
+                      <small class="form-text text-muted"><p>We'll never share your email with anyone else.</p></small>
+                      <p id = "emailValidation" style = "display: none;"></p>
+                  
+                </div>
+                <div class="col-lg-4 col-md-6">
+
+
+                    <label class="required" for="name">Name:</label>
+                    
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                      <input class="form-control"  type="text" id="name" name="name" placeholder="NAME" required>
+                    </div> 
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+
+
+                      <label class="required"  for="libid">Lib.Id:</label>
+                    
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input class="form-control" type="text" id="libid" name="libid" placeholder="LIB ID(1822cs0001)" onchange = "validateUserName()" required>
+                    </div>
+                    <p id = "usernameValidation" style = "display: none;"></p>
+
+
+                </div>
+
+           
+
+                <div class="col-lg-4 col-md-6">  
+
+
+                      <label class="required"  for="course">Course:</label>
+                        
+                        <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+                      <select class="form-control" name="course" id="course" required>
+                                        <option value="blank">Select course</option>
+                                        <option value="B.tech">B.tech</option>
+                                        <option value="B.Pharma">B.pharma</option>
+                                        <option value="MCA">MCA</option>
+                                        <option value="M.tech">M.tech</option>
+                                        <option value="MBA">MBA</option>
+                                    </select>
+                    </div>
+
+
+
+
+
+                      
+
+                    
+                </div>
+
+                <div class="col-lg-4 col-md-6"> 
+                   
+                      <label  class="required" for="branch">Branch:</label>
+                        
+
+                        <div class="input-group">
+                       
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+                          <select class="form-control" name="branch" id="branch" required>
+                                            <option value="blank">Select branch</option>
+                                            <option value="CSE">CSE</option>
+                                            <option value="CO">CO</option>
+                                            <option value="CSI">CSI</option>
+                                            <option value="IT">IT</option>
+                                            <option value="ECE">ECE</option>
+                                            <option value="ME">ME</option>
+                                            <option value="EN">EN</option>
+                                            <option value="CE">CE</option>
+                                            <option value="EIE">EIE</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                        </div>
+   
+                    <small class="form-text text-muted"><p>Leave as it is,if course is other than Btech/Mtech.</p></small>
+
+                  
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+
+
+                      <label  class="required" for="year">Year of study:</label>
+                        
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+                          <select class="form-control" name="year" id="year" required>
+                                            <option value="none">Select year</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                        </div>
+
+                      
+                   
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-6"> 
+                      <label class="required"  for="sem">Semester:</label>
+                     
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+                          <select class="form-control" name="sem" id="sem" required>
+                                            <option value="none">Select semester</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                        </div>
+
+                </div>
+
+                <div class="col-lg-4 col-md-6"> 
+
+
+                      <label for="phone">PhoneNo.</label>
+                       
+
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                          <input class="form-control" type="text" id="phone" name="phone" placeholder="PhoneNo" onchange="validatePhoneNumber()">
+                        </div>
+                        <p id = "phoneNovalidation" style = "display: none;"></p>
+                </div>
+
+                <div class="col-lg-4 col-md-6">  
+
+
+                      <label for="oemail">Personal Mail</label>
+                        
+
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                          <input class="form-control" type="text" id="oemail" name="oemail" placeholder="Personal email" onchange="validateAlternateEmail()">
+                        </div>
+                        <p id = "alternateEmailvalidation" style = "display: none;"></p>
+                      <small id="emailHelp" class="form-text text-muted">
+                      We'll never share your email with anyone else.</small>
+                    
+
+                </div>
+
+                <div class="col-lg-4 col-md-6"> 
+
+
+                      <label  class="required" for="pass">Create Password:</label>
+                        
+
+
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                          <input class="form-control" type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Create Password"required>
+
+                        </div>
+                    
+                </div>
+
+                <div class="col-lg-4 col-md-6">   
+
+                      <label class="required"  for="confirm">Confirm Password:</label>
+                        <br>
+
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
+                          <input class="form-control" type="password" id="confirm" name="confirm" placeholder="Confirm Password" required>
+                        </div>
+                </div>
+
+                  
+                
+                <div class="col-lg-4 col-md-6"id="submit">
+
+                     
+                      <input type="button" class="btn btn-primary btn-lg btn-block" value="submit" onclick = "check()">
+                      </button>
+
+
+                </div>
+                
+               
+           </div>
+
+               
+            
+        </form>
+    </div>
     <p id = "msg"></p>
+    <footer> For more info </footer>
         </body></html>
