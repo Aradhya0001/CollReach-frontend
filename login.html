@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>
+        Sign in
+    </title>
+    <link rel="icon" href="CollReach.PNG" type="image/x-icon">
+</head>
+<script type="text/javascript">
+    function validation() {
+        libidv = /^[0-9]{4}[a-z]{2}[0-9]{4}$/;
+        var pass = document.reg.pass.value;
+        var libid = document.reg.libid.value;
+        if (libid == "") {
+            alert("library id field required");
+            return false;
+        }
+        if (libidv.test(libid) == false) {
+            alert("library id is invalid");
+            return false;
+        }
+        if (pass.length == 0) {
+            alert("password is required");
+            return false;
+        }
+        if(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(reg.pass.value)!=true)
+            {
+                alert("Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters");
+                return false;
+            }
+
+        return true;
+    }
+    function submitForm()
+    {
+        var libid = document.reg.libid.value;
+        var pass  = document.reg.pass.value;
+        var xhr = new XMLHttpRequest();
+            var url = "http://localhost:8082/user/login";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    var errorMsg = document.getElementById("msg");
+                    errorMsg.innerHTML = "</br>" + (xhr.responseText);
+                    errorMsg.style.color = "red";
+                }
+            };
+            var data = JSON.stringify({
+                    "password": pass,
+                    "userName": libid
+                    
+                 });
+            xhr.send(data);
+            
+    }
+    function check()
+    {
+        if(validation() == true)
+        {
+            submitForm();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+</script>
+<body>
+    <h2>
+        <center>Sign in</center>
+    </h2>
+    <form name=reg action="#" method="post">
+        <label for="libid">Library Id:</label><br>
+        <input type="text" id="libid" name="libid" title="Please fill your registered library id"><br><br>
+        <label for="pass">Password:</label><br>
+        <input type="password" id="pass" name="pass">
+        <br><br>
+        <input type="button" value="submit" onclick="check()">
+        <button type="reset" value="reset">Cancel</button><br><br>
+        <a href="CollReach.html">Home</a>
+    </form>
+     <p id = "msg"></p>
+</body></html>

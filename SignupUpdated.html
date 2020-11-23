@@ -1,0 +1,414 @@
+<html>
+
+<head>
+    <title> Sign Up </title>
+    <link rel="icon" href="CollReach.PNG" type="image/x-icon">
+    <style>
+	body{
+		background-color : #202020;
+		color: white;
+	}
+	</style>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function validation() {
+            var name = document.reg.name.value;
+            var libid = document.reg.libid.value;
+            var pass = document.reg.pass.value;
+            var confirm = document.reg.confirm.value;
+            var email = document.reg.email.value;
+            var oemail = document.reg.oemail.value;
+            var phone = document.reg.phone.value;
+            var course = document.reg.course.value;
+            var branch = document.reg.branch.value;
+            var year = document.reg.year.value;
+            var sem = document.reg.sem.value;
+            letters = /^[A-Za-z ]+$/;
+            libidv = /^[0-9]{4}[a-z]{2}[0-9]{4}$/;
+            if (name == "") {
+                alert("Name field required");
+                return false;
+            }
+            if (letters.test(name) == false) {
+                alert("name is invalid");
+                return false;
+            }
+            if (libid == "") {
+                alert("library id field required");
+                return false;
+            }
+            if (libidv.test(libid) == false) {
+                alert("library id is invalid");
+                return false;
+            }
+            if (email == "") {
+                alert("email field required");
+                return false;
+            }
+            if (/^[a-z].+[0-9]{4}[a-z]{2}[0-9]{4}@kiet\.edu$/.test(reg.email.value) != true) {
+                alert("Invalid KIET email");
+                return false;
+            }
+
+            if (document.reg.course.selectedIndex == 0) {
+                document.reg.course.focus();
+                alert("Course field is required");
+                return false;
+            }
+            if (document.reg.branch.selectedIndex == 0) {
+                document.reg.branch.focus();
+                alert("Branch field is required");
+                return false;
+            }
+            if (document.reg.year.selectedIndex == 0) {
+                document.reg.year.focus();
+                alert("Year of study is required");
+                return false;
+            }
+            if (document.reg.sem.selectedIndex == 0) {
+                document.reg.sem.focus();
+                alert("Semester is required");
+                return false;
+            }
+    
+		if (oemail != "") {
+                if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(reg.email.value) != true) {
+                    alert("Personal email is wrong");
+                    return false;
+                }
+            }
+            if (email == oemail) {
+                alert("fill email other than kiet email");
+                return false;
+            }
+            if(phone != "")
+            {
+            	if(/^\d{10}$/.test(reg.phone.value)!= true)
+            	{
+            		alert("Invalid Phone number");
+            		return false;
+            	}
+            }
+            if (pass.length == 0) {
+                alert("password is required");
+                return false;
+            }
+            if(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(reg.pass.value)!=true)
+            {
+            	alert("Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters");
+            	return false;
+            }
+
+            if (confirm.length == 0) {
+                alert("confirm the password");
+                return false;
+            }
+            if (pass != confirm) {
+                alert("Password did not match");
+                return false;
+            }
+            return true;
+        }
+
+        function courseIdMapping() {
+            var course = document.reg.course.value;
+            var branch = document.reg.branch.value;
+            var year = document.reg.year.value;
+            var sem = document.reg.sem.value;
+			if ((course == "B.tech") && (branch == "CSE")  && (sem == "5") && (year == "3"))
+                return 1;
+            else if ((course == "B.tech") && (branch == "ME")  && (sem == "5") && (year == "3"))
+                return 2;
+            else if ((course == "B.tech") && (branch == "EN")  && (sem == "5") && (year == "3"))
+                return 3;
+            else if ((course == "B.tech") && (branch == "ECE")  && (sem == "5") && (year == "3"))
+                return 4;
+            else if ((course == "B.tech") && (branch == "CE")  && (sem == "5") && (year == "3"))
+                return 5;
+            else if ((course == "B.tech") && (branch == "CSI")  && (sem == "5") && (year == "3"))
+                return 6;
+            else if ((course == "B.tech") && (branch == "CO")  && (sem == "5") && (year == "3"))
+                return 7;
+            else if ((course == "B.tech") && (branch == "IT")  && (sem == "5") && (year == "3"))
+                return 8;
+            else if ((course == "B.tech") && (branch == "EIE")  && (sem == "5") && (year == "3"))
+                return 9;
+            }
+
+        function submitForm() {
+            var course = document.reg.course.value;
+            var branch = document.reg.branch.value;
+            var year = document.reg.year.value;
+            var sem = document.reg.sem.value;
+            var oemail = document.reg.oemail.value;
+            var pass = document.reg.pass.value;
+            var email =document.reg.email.value;
+            var name= document.reg.name.value;
+            var phone= document.reg.phone.value;
+            var libid = document.reg.libid.value; 
+            var courseId = courseIdMapping();
+            console.log(course+ " " + branch + " " + year + " " + sem + " "+ courseId + " "+ pass +" "+ name +" "+ libid +" "+ email +" "+ phone);
+            var xhr = new XMLHttpRequest();
+            var url = "http://localhost:8082/user/signup";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);
+					var errorMsg = document.getElementById("msg");
+					errorMsg.innerHTML = "</br>" + (xhr.responseText);
+					errorMsg.style.color = "red";
+                }
+            };
+            var data = JSON.stringify({
+                "courseId": courseId,
+                "alternateEmail": oemail,
+                "email": email,
+                "name": name,
+                "password": pass,
+                "phoneNo": phone,
+                "userName": libid
+            });
+            xhr.send(data);
+            
+        }
+
+        function check() {
+            if (validation() == true) {
+                submitForm();
+                return true;
+            }
+            else
+                {
+                    return false;
+                }
+        }
+		
+		function validateUserName(){
+			var libid = document.reg.libid.value;
+			
+			var xhr = new XMLHttpRequest();
+			var url = "http://localhost:8082/user/check-username";
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					console.log(xhr.responseText);
+					var errorMsg = document.getElementById("usernameValidation");
+					if(xhr.responseText != ""){
+						document.getElementById("libid").style.background = "red";
+						document.getElementById("libid").style.color = "white";
+						errorMsg.style.display = "block";
+						errorMsg.innerHTML = (xhr.responseText);
+						errorMsg.style.color = "red";
+					}
+					else{
+						document.getElementById("libid").style.background = "white";
+						document.getElementById("libid").style.color = "black";
+						errorMsg.style.display = "none";
+					}
+				}
+			};
+			var data = JSON.stringify({
+				"userName": libid
+			});
+			xhr.send(data);
+		}
+		function validateKietemail(){
+			var email = document.reg.email.value;
+			
+			var xhr = new XMLHttpRequest();
+			var url = "http://localhost:8082/user/check-email";
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					console.log(xhr.responseText);
+					var errorMsg = document.getElementById("emailValidation");
+					if(xhr.responseText != ""){
+						document.getElementById("email").style.background = "red";
+						document.getElementById("email").style.color = "white";
+						errorMsg.style.display = "block";
+						errorMsg.innerHTML = (xhr.responseText);
+						errorMsg.style.color = "red";
+					}
+					else{
+						document.getElementById("email").style.background = "white";
+						document.getElementById("email").style.color = "black";
+						errorMsg.style.display = "none";
+					}
+				}
+			};
+			var data = JSON.stringify({
+				"email": email
+			});
+			xhr.send(data);
+		}
+		function validateAlternateEmail(){
+			var oemail = document.reg.oemail.value;
+			
+			var xhr = new XMLHttpRequest();
+			var url = "http://localhost:8082/user/check-email";
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					console.log(xhr.responseText);
+					var errorMsg = document.getElementById("alternateEmailvalidation");
+					if(xhr.responseText != ""){
+						document.getElementById("oemail").style.background = "red";
+						document.getElementById("oemail").style.color = "white";
+						errorMsg.style.display = "block";
+						errorMsg.innerHTML = (xhr.responseText);
+						errorMsg.style.color = "red";
+					}
+					else{
+						document.getElementById("oemail").style.background = "white";
+						document.getElementById("oemail").style.color = "black";
+						errorMsg.style.display = "none";
+					}
+				}
+			};
+			var data = JSON.stringify({
+				"email": oemail
+			});
+			xhr.send(data);
+		}
+		function validatePhoneNumber(){
+			var phone = document.reg.phone.value;
+			
+			var xhr = new XMLHttpRequest();
+			var url = "http://localhost:8082/user/check-phone-no";
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					console.log(xhr.responseText);
+					var errorMsg = document.getElementById("phoneNovalidation");
+					if(xhr.responseText != ""){
+						document.getElementById("phone").style.background = "red";
+						document.getElementById("phone").style.color = "white";
+						errorMsg.style.display = "block";
+						errorMsg.innerHTML = (xhr.responseText);
+						errorMsg.style.color = "red";
+					}
+					else{
+						document.getElementById("phone").style.background = "white";
+						document.getElementById("phone").style.color = "black";
+						errorMsg.style.display = "none";
+					}
+				}
+			};
+			var data = JSON.stringify({
+				"phoneNo": phone
+			});
+			xhr.send(data);
+		}
+		
+    </script>
+    <h2>
+        <center>Register Yourself</center>
+    </h2>
+    <form name = "reg" method="post" action = "#">
+
+        <label for="name">Name:</label>
+        <br>
+        <input type="text" id="name" name="name">
+        <br>
+		
+        <label for="libid">Lib.Id:</label>
+        <br>
+        <input type="text" id="libid" name="libid" onchange = "validateUserName()">
+        <br>
+		<p id = "usernameValidation" style = "display: none;"></p>
+		
+        <label for="email">Email:</label>
+        <br>
+        <input type="text" id="email" name="email" onchange = "validateKietemail()">
+        <br>
+		<p id = "emailValidation" style = "display: none;"></p>
+        
+        <label for="course">Course:</label>
+        <br>
+        <select name="course" id="course">
+            <option value="blank"></option>
+            <option value="B.tech">B.tech</option>
+            <option value="B.Pharma">B.pharma</option>
+            <option value="MCA">MCA</option>
+            <option value="M.tech">M.tech</option>
+            <option value="MBA">MBA</option>
+        </select>
+        <br>
+		
+        <label for="branch">Branch:</label>
+        <br>
+        <select name="branch" id="branch">
+            <option value="blank"></option>
+            <option value="CSE">CSE</option>
+            <option value="CO">CO</option>
+            <option value="CSI">CSI</option>
+            <option value="IT">IT</option>
+            <option value="ECE">ECE</option>
+            <option value="ME">ME</option>
+            <option value="EN">EN</option>
+            <option value="CE">CE</option>
+            <option value="EIE">EIE</option>
+            <option value="Other">Other</option>
+        </select>
+        <br>
+        <label for="year">Year of study:</label>
+        <br>
+        <select name="year" id="year">
+            <option value="none"></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <br>
+		
+        <label for="sem">Semester:</label>
+        <br>
+        <select name="sem" id="sem">
+            <option value="none"></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+        <br>
+		
+        <label for="phone">PhoneNo.(optional)</label>
+        <br>
+        <input type="text" id="phone" name="phone" onchange="validatePhoneNumber()">
+        <br>
+		<p id = "phoneNovalidation" style = "display: none;"></p>
+        
+        <label for="oemail">Personal Mail(optional)</label>
+        <br>
+        <input type="text" id="oemail" name="oemail" onchange="validateAlternateEmail()">
+        <br>
+		<p id = "alternateEmailvalidation" style = "display: none;"></p>
+        
+        <label for="pass">Create Password:</label>
+        <br>
+        <input type="password" id="pass" name="pass" required>
+        <br>
+		
+        <label for="confirm">Confirm Password:</label>
+        <br>
+        <input type="password" id="confirm" name="confirm">
+        <br>
+		
+        <br>
+        <input type="button" value="submit" onclick = "check()">
+        <button type="reset" value="Reset">Reset</button>
+    </form>
+    <p id = "msg"></p>
+        </body></html>
