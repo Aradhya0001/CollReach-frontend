@@ -156,10 +156,16 @@
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    console.log(xhr.responseText);
-					var errorMsg = document.getElementById("msg");
-					errorMsg.innerHTML = "</br>" + (xhr.responseText);
-					errorMsg.style.color = "red";
+                    //var json = JSON.parse(xhr.responseText);
+                    //document.getElementById('out').value = json.output;
+					var responseMsg = xhr.responseText;
+                    console.log(responseMsg);
+					var msg = document.getElementById("msg");
+					msg.innerHTML = "</br>" + (xhr.responseText);
+					if(responseMsg.includes("Error"))
+						msg.style.color = "red";
+					else	
+						msg.style.color = "green";	
                 }
             };
             var data = JSON.stringify({
@@ -188,6 +194,7 @@
 		
 		function validateUserName(){
 			var libid = document.reg.libid.value;
+			libid === "" ? libid = "null" : libid = libid;
 			
 			var xhr = new XMLHttpRequest();
 			var url = "http://localhost:8082/user/check-username";
@@ -204,7 +211,7 @@
 						errorMsg.innerHTML = (xhr.responseText);
 						errorMsg.style.color = "red";
 					}
-					else{
+					else if(libid === "" || xhr.responseText === ""){
 						document.getElementById("libid").style.background = "white";
 						document.getElementById("libid").style.color = "black";
 						errorMsg.style.display = "none";
@@ -218,6 +225,7 @@
 		}
 		function validateKietemail(){
 			var email = document.reg.email.value;
+			email === "" ? email = "null" : email = email;
 			
 			var xhr = new XMLHttpRequest();
 			var url = "http://localhost:8082/user/check-email";
@@ -234,7 +242,7 @@
 						errorMsg.innerHTML = (xhr.responseText);
 						errorMsg.style.color = "red";
 					}
-					else{
+					else if(email === "" || xhr.responseText === ""){
 						document.getElementById("email").style.background = "white";
 						document.getElementById("email").style.color = "black";
 						errorMsg.style.display = "none";
@@ -248,6 +256,7 @@
 		}
 		function validateAlternateEmail(){
 			var oemail = document.reg.oemail.value;
+			oemail === "" ? oemail = "null" : oemail = oemail;
 			
 			var xhr = new XMLHttpRequest();
 			var url = "http://localhost:8082/user/check-email";
@@ -264,7 +273,7 @@
 						errorMsg.innerHTML = (xhr.responseText);
 						errorMsg.style.color = "red";
 					}
-					else{
+					else if(oemail === "" || xhr.responseText === ""){
 						document.getElementById("oemail").style.background = "white";
 						document.getElementById("oemail").style.color = "black";
 						errorMsg.style.display = "none";
@@ -278,6 +287,7 @@
 		}
 		function validatePhoneNumber(){
 			var phone = document.reg.phone.value;
+			phone === "" ? phone = "null" : phone = phone;
 			
 			var xhr = new XMLHttpRequest();
 			var url = "http://localhost:8082/user/check-phone-no";
@@ -294,7 +304,7 @@
 						errorMsg.innerHTML = (xhr.responseText);
 						errorMsg.style.color = "red";
 					}
-					else{
+					else if(phone === "" || xhr.responseText === ""){
 						document.getElementById("phone").style.background = "white";
 						document.getElementById("phone").style.color = "black";
 						errorMsg.style.display = "none";
