@@ -323,36 +323,51 @@
 		}
 		
     </script>
+<!-- ------------------------------------------------------------------------------------------ -->
+<!--Form structure from here -->
+
  <section class="shadow p-3 mb-5 bg-white rounded" id="heading">
-        
+        <!--Collreach logo -->
         <img src="CollReach.PNG" class="img-circle" alt="collreach logo"><img>
         <h2>
-            Register Yourself
+            Registration Page
         </h2>
     </section> 
 
-    
+<!-- Main contianer class-->
 <div  class="container-fluid" >
-    
-
+        <!-- form begin here -->
         <form name = "reg" method="post" action = "#">
+            <!-- parent of all div-->
             <div class="row">
+
+                <!--Email--------------------------------------------------------------------------- -->
+                     <!-- Bootstrap grinding-->
                      <div class="col-lg-4 col-md-6">   
 
-
+                      <!--Label -->  
                       <label  class="required" for="email" >Email:</label>
-                       
+
+                        <!-- Bootstrap .input-group class for aligning icons with input-->
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                          <input class="form-control" type="text" id="email" name="email" size="35" placeholder="email(abc.1822cs0001@kiet.edu)" onchange = "validateKietemail()" required>
+
+                            <!-- adding icon-->  
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+
+                            <!-- Main input area -->
+                            <input class="form-control" type="text" id="email" name="email" size="35" placeholder="email(abc.1822cs0001@kiet.edu)" onchange = "validateKietemail()" required>
                         </div>
-                      <small class="form-text text-muted"><p>We'll never share your email with anyone else.</p></small>
-                      <p id = "emailValidation" style = "display: none;"></p>
+
+
+                        <!-- small message at bottom of input --> 
+                        <small class="form-text text-muted"><p>We'll never share your email with anyone else.</p></small>
+                        <!-- alerting para -->
+                        <p id = "emailValidation" style = "display: none;"></p>
                   
                 </div>
+
+                <!--Name--------------------------------------------------------------------------- -->
                 <div class="col-lg-4 col-md-6">
-
-
                     <label class="required" for="name">Name:</label>
                     
                     <div class="input-group">
@@ -361,9 +376,8 @@
                     </div> 
                 </div>
 
+                <!--LIB iD--------------------------------------------------------------------------- -->
                 <div class="col-lg-4 col-md-6">
-
-
                       <label class="required"  for="libid">Lib.Id:</label>
                     
                       <div class="input-group">
@@ -371,12 +385,10 @@
                       <input class="form-control" type="text" id="libid" name="libid" placeholder="LIB ID(1822cs0001)" onchange = "validateUserName()" required>
                     </div>
                     <p id = "usernameValidation" style = "display: none;"></p>
-
-
                 </div>
 
            
-
+                <!--Course--------------------------------------------------------------------------- -->
                 <div class="col-lg-4 col-md-6">  
 
 
@@ -392,24 +404,14 @@
                                         <option value="M.tech">M.tech</option>
                                         <option value="MBA">MBA</option>
                                     </select>
-                    </div>
-
-
-
-
-
-                      
-
-                    
+                    </div>  
                 </div>
 
+                <!--Branch--------------------------------------------------------------------------- -->
                 <div class="col-lg-4 col-md-6"> 
                    
                       <label  class="required" for="branch">Branch:</label>
-                        
-
                         <div class="input-group">
-                       
                         <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
                           <select class="form-control" name="branch" id="branch" required>
                                             <option value="blank">Select branch</option>
@@ -427,10 +429,9 @@
                         </div>
    
                     <small class="form-text text-muted"><p>Leave as it is,if course is other than Btech/Mtech.</p></small>
-
-                  
                 </div>
 
+                <!--Year--------------------------------------------------------------------------- -->
                 <div class="col-lg-4 col-md-6">
 
 
@@ -446,13 +447,9 @@
                                             <option value="4">4</option>
                                         </select>
                         </div>
-
-                      
-                   
-
                 </div>
 
-
+                <!--Semester--------------------------------------------------------------------------- -->
                 <div class="col-lg-4 col-md-6"> 
                       <label class="required"  for="sem">Semester:</label>
                      
@@ -473,6 +470,7 @@
 
                 </div>
 
+                <!--Phone no.--------------------------------------------------------------------------- -->
                 <div class="col-lg-4 col-md-6"> 
 
 
@@ -486,12 +484,9 @@
                         <p id = "phoneNovalidation" style = "display: none;"></p>
                 </div>
 
+                <!--Personal mail----------------------------------------------------------------------- -->
                 <div class="col-lg-4 col-md-6">  
-
-
                       <label for="oemail">Personal Mail</label>
-                        
-
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                           <input class="form-control" type="text" id="oemail" name="oemail" placeholder="Personal email" onchange="validateAlternateEmail()">
@@ -499,17 +494,12 @@
                         <p id = "alternateEmailvalidation" style = "display: none;"></p>
                       <small id="emailHelp" class="form-text text-muted">
                       We'll never share your email with anyone else.</small>
-                    
-
                 </div>
 
+
+                <!--Create Password---------------------------------------------------------------------- -->
                 <div class="col-lg-4 col-md-6"> 
-
-
                       <label  class="required" for="pass">Create Password:</label>
-                        
-
-
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                           <input class="form-control" type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Create Password"required>
@@ -518,6 +508,7 @@
                     
                 </div>
 
+                <!--Confirm Password-------------------------------------------------------------------- -->
                 <div class="col-lg-4 col-md-6">   
 
                       <label class="required"  for="confirm">Confirm Password:</label>
@@ -530,23 +521,26 @@
                 </div>
 
                   
+                <!--submit button----------------------------------------------------------------------- -->
+                <div class="col-lg-12" id="submit">
+                      <input type="button" class="btn btn-primary" value="submit" id="submit-button" onclick = "check()">
                 
-                <div class="col-lg-4 col-md-6"id="submit">
-
-                     
-                      <input type="button" class="btn btn-primary btn-lg btn-block" value="submit" onclick = "check()">
-                      </button>
 
 
                 </div>
                 
-               
+               <!----------------------------------------------------------------------------- -->
+
+            <!-- .row end here -->   
            </div>
 
                
-            
+         <!--form ends here -->   
         </form>
+
+    <!-- Main .container ends here-->
     </div>
     <p id = "msg"></p>
-    <footer> For more info </footer>
-        </body></html>
+    
+</body>
+</html>

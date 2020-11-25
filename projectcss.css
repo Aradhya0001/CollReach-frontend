@@ -6,89 +6,76 @@
 body{
 
 	background-color:#DACACA;
-	background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center; 
-  
-   
 }
+
+/*registtration heading*/
 h2{
 	text-align: center;
-
-
 }
+
+
+/*collreach logo */
 img{
 	position: relative;
-	display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 10%;
-  height:90%;
-  float:left;
-}
-#heading{
+	width: 10%;
+	float:left;
 	
+}
+
+/* Registration heading*/
+#heading{
+
 	margin: 10px;
 	border: 1px solid #1C31B9;
 	border-left: 10px solid #1C31B9;
 	padding:10px;	
 	text-shadow: 0 0 3px #1DADCA;
-	;
 }
-section{
-	
-	background-color: #A8FAB0;
-}
+
+/*Main Form */
 #form{
-	margin: 10px;
+	margin:0px;
 	border: 1px solid black;
 	border-left: 10px solid #1C31B9;
-	padding:10px;	
 	background-color: #BCF7F5;
 }
 
 
-
+/* red asteric for mandatory filed */
 .required::after{
 	content:"*";
-	color:red;FFB13A
+	color:red;
 }
 
-
-.btn{
-	width: 50%;
-	margin-left: auto;
-	margin-right: auto;
-}
+/* make submit button green when hover over it*/
 .btn-primary:hover{
 	background-color:#77E161 ;
 }
-.btn-secondary:hover{
-	background-color: red;
-}
 
-
+/*All the labes of form (eg Name email...) */
 label{
 	font-size: 1.2em;
 }
+
+/* All the inputs of form*/
 input{
 	font-weight: 1.4em;
 }
+
+/* Form main div for styling*/
 .row{
-	position: relative;
-    background:rgba(255,255,255,.9);
+	margin:30px;
+    background:rgba(255,255,255);
     align-content:  center;
-    
-    opacity: .8;
-	padding: 5px;
-	margin: 30px;
+	padding: 10px;
 	overflow: auto;
-  background-color: #ffffff;
-  border: 1px solid black;
- box-shadow: 5px 5px 5px 5px #6E9C1E;
- border-left: 10px solid #1C31B9;
+    background-color: #ffffff;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px 5px #6E9C1E;
+    border-left: 10px solid #1C31B9;
 }
 
+/*Icon styling */
 .glyphicon{
 	position: relative;
 	border:1px solid black;
@@ -96,44 +83,84 @@ input{
 	background:rgba(178,176,172,.8);
 
 }
-.glyphicon-briefcase,.glyphicon-refresh{
-	position: none;
-	border:0px;
-	background: none;
-}
+
+/*Main section div (parent of .row)*/
 .container-fluid{
 	
-    height:70%;
-	width:80%;
+    margin-left:0px;
+    padding:0px;
+    margin-right: 0px; 
 	
 }
+
+/* Text in the form*/
 .form-text{
 	font-weight: bold;
 
 }
+
+/* Label of every .row div*/
 .row label {
 	position: relative;
-  	margin: 5%;
+  	
  	font-weight: bold;
  	color: #000000;
   	opacity: none;
  }
+ 
+/*Blue highlight around inputs when in focus */
 .form-control:focus{
-	box-shadow: 5px 5px 5px 5px #7EE4F9;
+	box-shadow: 0px 0px 5px 5px #7EE4F9;
 }
 
-@media (max-width:480px) and (){
-
-.container-fluid{
-	height:95%;
-	width:95%;
-	border:0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding:0px;
-
-	
+/*Submit button styling */
+#submit-button{
+	width:100px;
+	float: right;
+  	font-size: 1.3em;
+  	font-weight: bold ;  	
+  	height: 40px;
+  	border-radius: 60px;
 }
 
+
+/*media queries for responsiveness */
+/*1st */
+@media (max-width:360px) and (min-width: 0px){
+.row {
+    border-left: 10px solid #1C31B9;
+    padding:3px;
+    margin-right: 14px;
+    margin-left: 14px;
+}
+form{
+	margin-right: 0px;
+	margin-left: 0px;
+}
+}
+/*2nd */
+@media (max-width:970px) and (min-width: 361px){
+ img{
+
+	position: relative;
+	width: 11%;
+}
+
+}
+/*3rd */
+@media (max-width:1450px) and (min-width: 971px){
+ img{
+
+	position: relative;
+	width: 6%;
+}
+}
+
+/*4th*/
+@media (max-width:1920px) and (min-width: 1451px){
+ img{
+	position: relative;
+	width: 5%;
+}
 
 }
