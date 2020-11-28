@@ -7,6 +7,10 @@ body{
 
 	background-color:#DACACA;
 }
+section p{
+	text-align: center;
+	font-size: 2.0em;
+}
 
 /*registtration heading*/
 h2{
@@ -18,19 +22,19 @@ h2{
 img{
 	position: relative;
 	width: 10%;
-	float:left;	
+	float:left;
+	
 }
 
 /* Registration heading*/
 #heading{
 
 	margin: 10px;
-	border-radius: 30px;
 	border-left: 10px solid #0077ff;
 	border-right: 10px solid #0077ff;
 	padding:10px;	
 	text-shadow: 0 0 3px #1DADCA;
-
+	border-radius: 30px;
 }
 
 /*Main Form */
@@ -60,18 +64,19 @@ input{
 
 /* Form main div for styling*/
 .row{
-	margin:30px;
+	margin-left:20%;
+	margin-right: 20%;
+	margin-top: 30px;
     background:rgba(255,255,255);
     align-content:  center;
+    font-size: 1.6em;
 	padding: 10px;
 	overflow: auto;
     background-color: #ffffff;
     border-radius: 30px;
     box-shadow: 0px 0px 10px 10px #838383;
     border-left: 10px solid #0077ff;
-   
 }
-
 /*Icon styling */
 .glyphicon{
 	position: relative;
@@ -83,7 +88,6 @@ input{
 
 /*Main section div (parent of .row)*/
 .container-fluid{
-	
     margin-left:0px;
     padding:0px;
     margin-right: 0px; 
@@ -99,7 +103,6 @@ input{
 /* Label of every .row div*/
 .row label {
 	position: relative;
-  	
  	font-weight: bold;
  	color: #000000;
   	opacity: none;
@@ -113,20 +116,45 @@ input{
 /*Submit button styling */
 #submit-button{
 	border:0px;
+	margin:5px;
 	width:100px;
 	float: right;
-  	font-size: 1.3em;
+  	font-size: 1.0em;
   	font-weight: bold ;  	
   	height: 40px;
   	border-radius: 60px;
-  	background-color: #0077ff;
+  	padding: 3px;
 }
-/*hovering*/
+.btn-primary{
+	background-color: #0077ff;
+}
+/* make submit button green when hover over it*/
+.btn-primary:hover{
+	background-color:#77E161 ;
+}
+
 #submit-button:hover{
 	padding: 0px;
-	font-size: 1.6em;
-	background-color: #77E161;
+	font-size: 1.2em;
+
 }
+p a{
+
+	padding: 5px;
+	background-color: #32CEB9;
+	color:white;
+	border-radius: 30px;
+	text-decoration: none;
+}
+p a:hover{
+	text-decoration: none;
+	color: white;
+	background-color: #2BD5A2;
+}
+
+p a:hover:after{
+	content: " take you to home page";
+}	
 
 /*media queries for responsiveness */
 /*1st */
@@ -141,4 +169,35 @@ form{
 	margin-right: 0px;
 	margin-left: 0px;
 }
+}
+/*2nd */
+@media (max-width:970px) and (min-width: 361px){
+ img{
+
+	position: relative;
+	width: 11%;
+}
+.row{
+	margin-left:40px;
+	margin-right: 40px;
+	margin-top: 5%;
+
+}
+/*3rd */
+@media (max-width:1450px) and (min-width: 971px){
+ img{
+
+	position: relative;
+	width: 1%;
+}
+}
+
+/*4th*/
+@media (max-width:1920px) and (min-width: 1451px){
+ img{
+	position: relative;
+	width: 4%;
+	
+}
+
 }
