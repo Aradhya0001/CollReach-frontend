@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>Profile</title>
+    <link rel="icon" href="CollReach.PNG" type="image/x-icon">
+    <script>
+        function login() {
+            var xhr = new XMLHttpRequest();
+            var url = "http://localhost:8082/user/login";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    var userInfo = JSON.parse(xhr.responseText);
+                    document.getElementById('name').innerHTML = userInfo.userPersonalInfoResponse.name;
+                    document.getElementById('description').innerHTML = userInfo.userPersonalInfoResponse.description;
+                    document.getElementById('year').innerHTML = userInfo.userPersonalInfoResponse.courseInfoResponse.yearOfStudy;
+                    document.getElementById('sem').innerHTML = userInfo.userPersonalInfoResponse.courseInfoResponse.semester;
+                    document.getElementById('branch').innerHTML = userInfo.userPersonalInfoResponse.courseInfoResponse.branch;
+                    document.getElementById('course').innerHTML = userInfo.userPersonalInfoResponse.courseInfoResponse.courseName;
+                    document.getElementById('kietEmail').innerHTML = userInfo.userPersonalInfoResponse.email;
+                    document.getElementById('personalEmail').innerHTML = userInfo.userPersonalInfoResponse.alternateEmail;
+                    document.getElementById('phoneNo').innerHTML = userInfo.userPersonalInfoResponse.phoneNo;
+                    document.getElementById('linkedIn').innerHTML = userInfo.userPersonalInfoResponse.linkedinLink;
+                    var skill = userInfo.userPersonalInfoResponse.skills;
+                    for (let [k, v] of Object.entries(skill)) {
+                        console.log(k, v);
+                        document.getElementById('skills').innerHTML += (`${JSON.stringify(k)}:- ${JSON.stringify(v)}`) + "<br>";
+                    }
+                }
+            };
+            var data = JSON.stringify({
+                "userName": "1822cs1049"
+                , "password": "Ayush@123"
+            });
+            xhr.send(data);
+        }
+    </script>
+</head>
+
+<body onload="login()">
+    <div id="name"></div>
+    <label for="image"></label>
+    <br>
+    <br> <img src="" alt="Profile Image">
+    <br>
+    <br>
+    <input type="file" id="img" name="img" accept="image/*">
+    <br>
+    <br>
+    <input type="submit" value="Set">
+    <input type="button" value="Remove">
+    <br>
+    <br>
+    <div id="description"></div>
+    <br> SKILLS:VOTES
+    <br>
+    <br>
+    <br>
+    <div id="skills"></div>
+    <div id="skillLevel"></div>
+    <br>
+    <br>
+    <br> COURSE INFO:-
+    <br>
+    <br> YEAR
+    <div id="year"></div> SEMESTER
+    <div id="sem"></div> BRANCH
+    <div id="branch"></div> COURSE
+    <div id="course"></div>
+    <br>
+    <br> CONTACT DETAILS:-
+    <br>
+    <br> KIET EMAIL
+    <div id="kietEmail"></div> EMAIL
+    <div id="personalEmail"></div> PHONE NUMBER
+    <div id="phoneNo"></div> LINKEDIN
+    <div id="linkedIn"></div><br><br>
+    <button onclick="window.location.href='UserProfileUpdate.html';">UPDATE PROFILE</button>
+</body>
+
+</html>
