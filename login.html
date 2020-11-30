@@ -13,7 +13,7 @@
     <link rel="icon" href="CollReach.PNG" type="image/x-icon">
 </head>
 <script type="text/javascript">
-    function validation() {
+    function loginValidation() {
         libidv = /^[0-9]{4}[a-z]{2}[0-9]{4}$/;
         var pass = document.reg.pass.value;
         var libid = document.reg.libid.value;
@@ -29,16 +29,16 @@
             alert("password is required");
             return false;
         }
-        if(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(reg.pass.value)!=true)
-            {
+        if(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(reg.pass.value)!=true){
                 alert("Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters");
                 return false;
-            }
+        }
 
         return true;
     }
-    function submitForm()
-    {
+    
+    
+    function submitForm(){
         var libid = document.reg.libid.value;
         var pass  = document.reg.pass.value;
         var xhr = new XMLHttpRequest();
@@ -48,28 +48,31 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     console.log(xhr.responseText);
+                    var msg = document.getElementById("msg");
+                    msg.innerHTML = "Login Successfull.";
+                    msg.style.color = "green";
+                    //msg.style.display = "none";
+                }
+                else{
                     var errorMsg = document.getElementById("msg");
-                    errorMsg.innerHTML = "</br>" + (xhr.responseText);
+                    errorMsg.innerHTML = "</br>" + "Either username or password or both are incorrect.";
                     errorMsg.style.color = "red";
+                    errorMsg.style.display = "block";
                 }
             };
             var data = JSON.stringify({
                     "password": pass,
                     "userName": libid
-                    
                  });
             xhr.send(data);
-            
     }
-    function check()
-    {
-        if(validation() == true)
-        {
+    
+    function check(){
+        if(loginValidation() == true){
             submitForm();
             return true;
         }
-        else
-        {
+        else{
             return false;
         }
     }
