@@ -57,29 +57,6 @@
             return true;
         }
         
-        
-        //both year and sem must be updated
-        function yearsemFilledorNot() {
-
-            if (document.profileUpdate.year.selectedIndex != 0) {
-                if (document.profileUpdate.sem.selectedIndex == 0) {
-                    document.profileUpdate.sem.focus();
-                    alert("Update semester also");
-                }
-                return false;
-            }
-            if (document.profileUpdate.sem.selectedIndex != 0) {
-                if (document.profileUpdate.year.selectedIndex == 0) {
-                    document.profileUpdate.year.focus();
-                    alert("Update year also");
-                }
-                return false;
-            }
-
-            return true;
-        }
-        
-        
         //checks if the email exists or not
         function validateEmail() {
             var personalEmail = document.personalEmailUpdate.personalEmail.value;
@@ -559,7 +536,7 @@
     </form>
 
     <form name="skillupdate" method="post" action="#">
-        <lable for="skill">Skills:</lable><br>
+        <label for="skill">Skills:</label><br>
         <select id="skill" name="skill" onchange="addSkill()">
             <option value = "AI">AI</option>
             <option value = "Web Development">Web Developement</option>
@@ -574,9 +551,9 @@
 
     <h3>UPDATE PASSWORD:</h3><br>
     <form name="passwordUpdate" method="post" action="#">
-        <lable for="password">OLD PASSWORD:</lable><br>
+        <label for="password">OLD PASSWORD:</label><br>
         <input type="text" id="password" name="password"><br>
-        <lable for="newPassword">NEW PASSWORD:</lable><br>
+        <label for="newPassword">NEW PASSWORD:</label><br>
         <input type="text" id="newPassword" name="newPassword"><br><br>
         <input type="button" value="Confirm" onclick="sendPasswordData()">
         <p id="msg6"></p>
