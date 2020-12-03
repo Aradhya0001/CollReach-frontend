@@ -128,6 +128,12 @@ input{
 	background-color: #77E161;
 }
 
+#msg{
+	text-align: center;
+	
+  	color: red;
+}
+
 /*media queries for responsiveness */
 /*1st */
 @media (max-width:360px) and (min-width: 0px){

@@ -1,19 +1,14 @@
+<!DOCTYPE html>
 <html>
 <!--USER_PROFILE_UPDATE FRONT_END-->
 
 <head>
-    <style>
-        #skillset {
-            width: 230px;
-            height: auto;
-            margin-top: 20px;
-            overflow: scroll;
-            background: #202020;
-            padding: 20px;
-            display: block;
-        }
-    </style>
-
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="UserProfileUpdateCss.css">
+    <link rel="icon" href="CollReach.PNG" type="image/x-icon">
+    
     <title>Profile Update</title>
     <link rel="icon" href="CollReach.PNG" type="image/x-icon">
     <script type="text/javascript">
@@ -483,83 +478,260 @@
 </head>
 
 <body>
+    <section class="shadow p-3 mb-5 bg-white" id="heading">
     <h2>
-        <center>Profile Update</center>
+        Profile Update
     </h2>
-    <form name="personalEmailUpdate" method="post" action="#">
-
-        <label for="personalEmail">Personal Email:</label><br>
-        <input type="text" id="personalEmail" name="personalEmail" onchange="validateEmail()"><br><br>
-        <p id="validateEmail" style="display: none;"></p>
-        <input type="button" value="Update" onclick="sendEmailData()">
-        <p id="msg"></p>
-    </form>
-
-    <form name="phoneNoUpdate" method="post" action="#">
-        <label for="phoneNo">Phone Number:</label><br>
-        <input type="text" id="phoneNo" name="phoneNo" onchange="validatePhoneNo()"><br><br>
-        <p id="PhoneNovalidation" style="display:none;"></p>
-        <input type="button" value="Update" onclick="phonenoUpdate()">
-        <p id="msg1"></p>
-    </form>
-
-    <form name="descriptionUpdate" method="post" action="#">
-        <label for="description">Description:</label><br>
-        <input type="text" id="description" name="description"><br><br>
-        <input type="button" value="Update" onclick="DescriptionUpdate()">
-        <p id="msg2"></p>
-    </form>
-
-    <form name="linkedInUpdate" method="post" action="#">
-        <label for="linkedIn">LinkedIn Link:</label><br>
-        <input type="text" id="linkedIn" name="linkedIn" onchange="validatelinkedInlink()"><br><br>
-        <p id="linkedInvalidation" style="display:none;"></p>
-        <input type="button" value="Update" onclick="linkedInDataSend()">
-        <p id="msg3"></p>
-    </form>
-    <h3>UPDATE COLLEGE DETAILS:</h3><br>
-    <form name="yearsemUpdate" method="post" action="#">
-        <label for="sem">Semester:</label><br>
-        <select id="sem" name="sem">
-            <option value="none">Select semester</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-        </select><br><br>
-        <input type="button" value="Update" onclick="YearsemUpdate()">
-        <p id="msg4"></p>
-    </form>
-
-    <form name="skillupdate" method="post" action="#">
-        <label for="skill">Skills:</label><br>
-        <select id="skill" name="skill" onchange="addSkill()">
-            <option value = "AI">AI</option>
-            <option value = "Web Development">Web Developement</option>
-            <option value = "ML">ML</option>
-            <option value = "Deep Learning">Deep Learning</option>
-            <option value = "Android">Android</option>
-        </select><br><br>
-        <div id="skillset"></div>
-        <input type="button" value="Update" onclick="skillUpdate()">
-        <p id="msg5"></p>
-    </form>
-
-    <h3>UPDATE PASSWORD:</h3><br>
-    <form name="passwordUpdate" method="post" action="#">
-        <label for="password">OLD PASSWORD:</label><br>
-        <input type="text" id="password" name="password"><br>
-        <label for="newPassword">NEW PASSWORD:</label><br>
-        <input type="text" id="newPassword" name="newPassword"><br><br>
-        <input type="button" value="Confirm" onclick="sendPasswordData()">
-        <p id="msg6"></p>
-    </form>
+    </section>
 
 
+<div class="container-fluid">
+
+    <div class="row">
+                
+                <div class="col-md-12" id="titles" >
+                    <h3>PERSONAL DETAILS</h3>
+                </div>
+
+
+
+        
+                <div class="col-md-6">
+                    
+
+                    <div class="card">
+                                <form name="personalEmailUpdate" method="post" action="#">
+                                    <label for="personalEmail">Personal Email</label>
+                                    <div class="input-group">            
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+
+                                        <!-- Main input area -->
+                                        <input class="form-control" type="text" id="personalEmail" name="personalEmail" placeholder="mail ID" onchange="validateEmail()" >
+
+                                    </div>
+                                    <input class="btn btn-secondary" type="button" value="Update" onclick="sendEmailData()">
+
+                                    <p id="validateEmail" style="display: none;"></p>
+                                    <p id="msg"></p>
+                                </form>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="col-md-6">
+                    <div class="card">
+                                <form name="phoneNoUpdate" method="post" action="#">
+                                    <label for="phoneNo">Phone Number</label>
+
+                                    <div class="input-group">
+
+                            
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+
+                                        <!-- Main input area -->
+                                        <input class="form-control" type="text" id="phoneNo" name="phoneNo" placeholder="Phone No." onchange="validatePhoneNo()" >
+
+                                    </div>
+
+                                    <input class="btn btn-secondary" type="button" value="Update" onclick="phonenoUpdate()">
+                                    <p id="PhoneNovalidation" style="display:none;"></p>
+                                    
+                                    <p id="msg1"></p>
+                                </form>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="col-md-6">
+                    <div class="card">
+                                <form name="descriptionUpdate" method="post" action="#">
+                                    <label for="description">Description</label>
+
+                                    <div class="input-group">
+
+                            
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+
+                                        <!-- Main input area -->
+                                        <input class="form-control" type="text" id="description" placeholder="About me" name="description">
+
+                                       
+                                    </div>
+                                    <input class="btn btn-secondary" type="button" value="Update" onclick="DescriptionUpdate()">
+
+                                    
+                                    
+                                    <p id="msg2"></p>
+                                </form>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="col-md-6">
+                    <div class="card">
+                                <form name="linkedInUpdate" method="post" action="#">
+                                    <label for="linkedIn">LinkedIn Link</label>
+
+
+                                    <div class="input-group">
+
+                            
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-paperclip"></i></span>
+
+                                        <!-- Main input area -->
+                                        <input class="form-control" type="text" id="linkedIn" placeholder="LinkedIn ID" name="linkedIn" onchange="validatelinkedInlink()">
+
+                                        
+                                    </div>
+                                    <input class="btn btn-secondary" type="button" value="Update" onclick="linkedInDataSend()">
+
+                                    
+                                    <p id="linkedInvalidation" style="display:none;"></p>
+                                    
+                                    <p id="msg3"></p>
+                                </form>
+                    </div>
+                    <br>
+                </div>
+       
+
+
+                <div class="col-md-12" id="titles">
+                    <h3>UPDATE COLLEGE DETAILS</h3>
+                </div>
+
+
+        
+                <div class="col-md-6">
+                    <div class="card" id="sem-card">
+                                <form name="yearsemUpdate" method="post" action="#">
+                                    <label for="sem">Semester</label>
+
+
+                                    <div class="input-group">
+
+                            
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+
+                                        <!-- Main input area -->
+                                        <select class="form-control" id="sem" name="sem">
+                                        <option value="none">Select semester</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        </select>
+
+                                    </div>
+                                    <input id="sem-button" class="btn btn-secondary" type="button" value="Update" onclick="YearsemUpdate()">
+                                    
+                                    
+                                    <p id="msg4"></p>
+                                </form>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="col-md-6">
+                    <div class="card">
+                                <form name="skillupdate" method="post" action="#">
+                                    <label for="skill">Skills</label>
+
+
+                                    <div class="input-group">
+
+                            
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+
+                                        <!-- Main input area -->
+                                        <select class="form-control" id="skill" name="skill" onchange="addSkill()">
+                                        <option value = "AI">AI</option>
+                                        <option value = "Web Development">Web Developement</option>
+                                        <option value = "ML">ML</option>
+                                        <option value = "Deep Learning">Deep Learning</option>
+                                        <option value = "Android">Android</option>
+                                        </select>
+
+                                    </div>
+
+                                    
+                                    <p id="skill-box">Selected skill will show here..</p>
+                                    <div id="skillset"></div>
+                                    <input class="btn btn-secondary" type="button" value="Update" onclick="skillUpdate()">
+                                    <p id="msg5"></p>
+                                </form>
+                    </div>
+                    <br>
+                </div>
+        
+
+
+
+
+
+
+
+                <div class="col-md-12" id="titles">
+                    <h3>UPDATE PASSWORD</h3>
+                </div>
+
+
+        
+                <div class="col-md-12">
+                    <div class="card" id=up-pass >
+                                <form name="passwordUpdate" method="post" action="#">
+                                    <label for="password">OLD PASSWORD</label>
+
+
+                                    <div class="input-group">
+
+                            
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+                                        <!-- Main input area -->
+                                        <input class="form-control" type="text" placeholder="Old Password"  id="password" name="password">
+                                    </div>
+                                    
+                                    <br>
+                                    <label for="newPassword">NEW PASSWORD</label>
+                                    <div class="input-group">
+
+                            
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
+
+                                        <!-- Main input area -->
+                                        <input class="form-control" type="text"placeholder="New Password" id="newPassword" name="newPassword">
+                                    </div>
+                                    
+
+
+                                    
+                                    <input class="btn btn-secondary" type="button" value="Confirm" onclick="sendPasswordData()">
+                                    <p id="msg6"></p>
+                                </form>
+                    </div>
+                </div>
+       
+
+</div>
+</div>
 </body>
 
 </html>
