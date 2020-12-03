@@ -1,7 +1,12 @@
+<!DOCTYPE html>
 <html>
 
 <head>
     <title>Profile</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="UserProfileCss.css">
     <link rel="icon" href="CollReach.PNG" type="image/x-icon">
     <script>
         function login() {
@@ -40,44 +45,169 @@
 </head>
 
 <body onload="login()">
-    <div id="name"></div>
-    <label for="image"></label>
-    <br>
-    <br> <img src="" alt="Profile Image">
-    <br>
-    <br>
-    <input type="file" id="img" name="img" accept="image/*">
-    <br>
-    <br>
-    <input type="submit" value="Set">
-    <input type="button" value="Remove">
-    <br>
-    <br>
-    <div id="description"></div>
-    <br> SKILLS:VOTES
-    <br>
-    <br>
-    <br>
-    <div id="skills"></div>
-    <div id="skillLevel"></div>
-    <br>
-    <br>
-    <br> COURSE INFO:-
-    <br>
-    <br> YEAR
-    <div id="year"></div> SEMESTER
-    <div id="sem"></div> BRANCH
-    <div id="branch"></div> COURSE
-    <div id="course"></div>
-    <br>
-    <br> CONTACT DETAILS:-
-    <br>
-    <br> KIET EMAIL
-    <div id="kietEmail"></div> EMAIL
-    <div id="personalEmail"></div> PHONE NUMBER
-    <div id="phoneNo"></div> LINKEDIN
-    <div id="linkedIn"></div><br><br>
-    <button onclick="window.location.href='UserProfileUpdate.html';">UPDATE PROFILE</button>
+
+<section class="shadow p-3 mb-5 bg-white" id="heading">
+    <h2>
+        COLLREACH
+    </h2>
+    <div>
+    --Connect the opportunity
+    </div>
+</section>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+            <div class="col-md-12">
+            <div class="card" id="main-title" >
+                
+                <div id="kietEmail">ayush.1822cs1051@kiet.edu</div>
+
+
+            </div>
+            </div>
+            <div class="col-lg-8 col-md-7">
+            <div class="card" id="no-border" >
+                <div id="name">Ayush kumar
+                </div>
+
+                <div>
+                    <br>
+                    <p>About me-</p>
+                    <div class="content" id="description"></div>
+                </div>
+                
+            </div>
+            </div>
+
+
+
+            <div class="col-lg-4 col-md-5">
+            <div class="card" id="no-border">
+                <label for="image"></label>
+             <img src="CollReach.PNG" alt="Profile Image">
+
+
+                    <form>
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="img" name="img" accept="image/*">
+                        <label class="custom-file-label" style="text-align: left;">Edit pic here</label>
+                        <div class="invalid-feedback">choose suitable file</div>
+                      </div>
+                    </form>
+
+
+                    <div>
+                        <input class="btn btn-primary btn-sm" type="submit" value="Set">
+                        <input class="btn btn-secondary btn-sm" type="button" value="Remove">
+                        
+                    </div>
+            </div>
+            </div>
+
+
+
+            <div class="col-md-12">
+            <div class="card">
+                 <h5 class="card-title">SKILLS:VOTES</h5>
+
+                <div class="content">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div id="skills"></div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div id="skillLevel"></div>
+                    </div>
+                </div>
+              
+            </div>
+            </div>
+
+
+            <div class="col-md-12">
+            <div class="card">
+                <div class="title">
+                <h5 class="card-title">
+                COURSE INFO</h5>
+                </div>
+
+                <div class="content">
+
+
+                    <table>                      
+                        <tr>
+                            <td>COURSE
+                            <td> <div id="course"></div>
+                        </tr>
+                        <tr>
+                            <td>BRANCH
+                            <td> <div id="branch"></div> 
+                        </tr>
+                        <tr>
+                            <td>YEAR
+                            <td><div id="year"></div> 
+                        </tr>
+                                
+                        <tr>
+                            <td>SEMESTER
+                            <td> <div id="sem"></div> 
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-md-12">
+            <div class="card">
+                <h5 class="card-title">CONTACT DETAILS</h5>
+                
+                
+                <div class="content">
+
+                    <table>
+                        <tr>
+                            <td>EMAIL
+                            <td><div id="personalEmail"></div>
+                        </tr>
+                                
+                        <tr>
+                            <td>PHONE NUMBER
+                            <td><div id="phoneNo"></div>  
+                        </tr>
+
+                        <tr>
+                            <td>LINKEDIN
+                            <td><div id="linkedIn"></div>
+                        </tr>
+                            
+
+                    </table>
+                    
+                     
+                    
+                    
+                </div>
+
+
+
+
+
+            </div>
+            </div>  
+
+
+
+
+            <div class="col-lg-12">
+            <button id="updatebutton" class="btn btn-primary" onclick="window.location.href='UserProfileUpdate.html';">UPDATE PROFILE</button>
+            </div>
+
+    </div>
+</div>
+
 </body>
 
 </html>

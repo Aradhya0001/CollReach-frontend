@@ -7,22 +7,11 @@ body{
 
 	background-color:#DACACA;
 }
-section p{
-	text-align: center;
-	font-size: 2.0em;
-}
 
 /*registtration heading*/
 h2{
 	text-align: center;
-}
-
-
-/*collreach logo */
-img{
-	position: relative;
-	width: 10%;
-	float:left;
+	font-size: 1.2em;
 	
 }
 
@@ -35,6 +24,7 @@ img{
 	padding:10px;	
 	text-shadow: 0 0 3px #1DADCA;
 	border-radius: 30px;
+	font-size: 2.5em;
 }
 
 /*Main Form */
@@ -54,7 +44,7 @@ img{
 
 /*All the labes of form (eg Name email...) */
 label{
-	font-size: 1.2em;
+	font-size: 1em;
 }
 
 /* All the inputs of form*/
@@ -156,6 +146,10 @@ p a:hover:after{
 	content: " take you to home page";
 }	
 
+#msg{
+	color:red;
+	font-size: .9em;
+}
 /*media queries for responsiveness */
 /*1st */
 @media (max-width:360px) and (min-width: 0px){
@@ -172,32 +166,3 @@ form{
 }
 /*2nd */
 @media (max-width:970px) and (min-width: 361px){
- img{
-
-	position: relative;
-	width: 11%;
-}
-.row{
-	margin-left:40px;
-	margin-right: 40px;
-	margin-top: 5%;
-
-}
-/*3rd */
-@media (max-width:1450px) and (min-width: 971px){
- img{
-
-	position: relative;
-	width: 1%;
-}
-}
-
-/*4th*/
-@media (max-width:1920px) and (min-width: 1451px){
- img{
-	position: relative;
-	width: 4%;
-	
-}
-
-}
