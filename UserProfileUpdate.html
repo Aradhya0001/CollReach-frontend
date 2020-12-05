@@ -548,8 +548,8 @@
 
 
 
-                <div class="col-md-6">
-                    <div class="card">
+                <div class="col-md-6" id="grid-adjust">
+                    <div class="card" id="des-card">
                                 <form name="descriptionUpdate" method="post" action="#">
                                     <label for="description">Description</label>
 
@@ -559,7 +559,7 @@
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
 
                                         <!-- Main input area -->
-                                        <input class="form-control" type="text" id="description" placeholder="About me" name="description">
+                                        <textarea class="form-control"  id="description" placeholder="About me" name="description" maxlength = "200"></textarea>
 
                                        
                                     </div>
@@ -577,8 +577,8 @@
 
 
 
-                <div class="col-md-6">
-                    <div class="card">
+                <div class="col-md-6" id="grid-adjust1">
+                    <div class="card" id="lin-card">
                                 <form name="linkedInUpdate" method="post" action="#">
                                     <label for="linkedIn">LinkedIn Link</label>
 
@@ -593,18 +593,18 @@
 
                                         
                                     </div>
-                                    <input class="btn btn-secondary" type="button" value="Update" onclick="linkedInDataSend()">
+                                    <input id="lin-button" class="btn btn-secondary" type="button" value="Update" onclick="linkedInDataSend()">
 
                                     
                                     <p id="linkedInvalidation" style="display:none;"></p>
                                     
                                     <p id="msg3"></p>
                                 </form>
-                    </div>
-                    <br>
-                </div>
-       
 
+                    </div>  
+
+                </div>
+                   
 
                 <div class="col-md-12" id="titles">
                     <h3>UPDATE COLLEGE DETAILS</h3>
@@ -678,7 +678,7 @@
                                     <p id="msg5"></p>
                                 </form>
                     </div>
-                    <br>
+                   <br>
                 </div>
         
 
@@ -723,7 +723,7 @@
 
 
                                     
-                                    <input class="btn btn-secondary" type="button" value="Confirm" onclick="sendPasswordData()">
+                                    <input class="btn btn-secondary" type="button" value="Confirm" id="password-button" onclick="sendPasswordData()">
                                     <p id="msg6"></p>
                                 </form>
                     </div>
