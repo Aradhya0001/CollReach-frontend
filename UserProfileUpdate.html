@@ -117,7 +117,7 @@
             xhr.send(data);
         }
 
-
+        //checks if linkedin link exists or not
         function validatelinkedInlink() {
             var linkedIn = document.linkedInUpdate.linkedIn.value;
             linkedIn === "" ? linkedIn = "null" : linkedIn = linkedIn;
@@ -157,6 +157,7 @@
             var url = "http://localhost:8082/user/alternate-email";
             xhr.open("PUT", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Authorization", localStorage.getItem('auth'));
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var responseMsg = xhr.responseText;
@@ -170,8 +171,7 @@
                 }
             };
             var data = JSON.stringify({
-                "userName": "1822cs1036",
-                "password": "Aradhya@1",
+                "userName": localStorage.getItem('username'),
                 "alternateEmail": personalEmail
 
             });
@@ -184,6 +184,7 @@
             var url = "http://localhost:8082/user/phone-no";
             xhr.open("PUT", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Authorization", localStorage.getItem('auth'));
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var responseMsg = xhr.responseText;
@@ -197,10 +198,8 @@
                 }
             };
             var data = JSON.stringify({
-                "userName": "1822cs1036",
-                "password": "Aradhya@1",
+                "userName": localStorage.getItem('username'),
                 "phoneNo": phoneNo
-
             });
             xhr.send(data);
         }
@@ -212,6 +211,7 @@
             var url = "http://localhost:8082/user/description";
             xhr.open("PUT", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Authorization", localStorage.getItem('auth'));
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var responseMsg = xhr.responseText;
@@ -225,8 +225,7 @@
                 }
             };
             var data = JSON.stringify({
-                "userName": "1822cs1049",
-                "password": "Ayush@1",
+                "userName": localStorage.getItem('username'),
                 "description": description
 
             });
@@ -240,6 +239,7 @@
             var url = "http://localhost:8082/user/linkedin-link";
             xhr.open("PUT", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Authorization", localStorage.getItem('auth'));
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var responseMsg = xhr.responseText;
@@ -253,8 +253,7 @@
                 }
             };
             var data = JSON.stringify({
-                "userName": "1822cs1049",
-                "password": "Ayush@12",
+                "userName": localStorage.getItem('username'),
                 "linkedinLink": linkedIn
 
             });
@@ -299,6 +298,7 @@
             var url = "http://localhost:8082/user/login";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Authorization", localStorage.getItem('auth'));
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     console.log(xhr.responseText);
@@ -319,6 +319,7 @@
                     var url = "http://localhost:8082/user/course-id";
                     xhr2.open("PUT", url, true);
                     xhr2.setRequestHeader("Content-Type", "application/json");
+                    xhr2.setRequestHeader("Authorization", localStorage.getItem('auth'));
                     xhr2.onreadystatechange = function() {
                         if (xhr2.readyState === 4 && xhr2.status === 200) {
                             var responseMsg = xhr2.responseText;
@@ -332,8 +333,7 @@
                         }
                     };
                     var data2 = JSON.stringify({
-                        "userName": "1822cs1049",
-                        "password": "Ayush@1",
+                        "userName": localStorage.getItem('username'),
                         "courseId": courseId
                     });
                     xhr2.send(data2);
@@ -341,8 +341,7 @@
                 }
             };
             var data = JSON.stringify({
-                "userName": "1822cs1049",
-                "password": "Ayush@1"
+                "userName": localStorage.getItem('username')
             });
             xhr.send(data);
         }
@@ -356,6 +355,7 @@
             var url = "http://localhost:8082/user/password";
             xhr.open("PUT", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Authorization", localStorage.getItem('auth'));
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var responseMsg = xhr.responseText;
@@ -369,13 +369,14 @@
                 }
             };
             var data = JSON.stringify({
-                "userName": "1822cs1049",
+                "userName": localStorage.getItem('username'),
                 "password": password,
                 "newPassword": newPassword
 
             });
             xhr.send(data);
         }
+        
         //send password to backend after proper validations
         function sendPasswordData() {
             if (validatePassword() == true) {
@@ -423,6 +424,7 @@
             var url = "http://localhost:8082/user/skills";
             xhr.open("PUT", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Authorization", localStorage.getItem('auth'));
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var responseMsg = xhr.responseText;
@@ -440,7 +442,7 @@
                 mappedSkills.push(skillIdmapping(arr[i]));
             }
             var data = JSON.stringify({
-                "userName": "1822cs1049",
+                "userName": localStorage.getItem('username'),
                 "skills": mappedSkills
             });
             xhr.send(data);
@@ -476,262 +478,215 @@
 
     </script>
 </head>
-
 <body>
     <section class="shadow p-3 mb-5 bg-white" id="heading">
-    <h2>
-        Profile Update
-    </h2>
+        <h2>
+            Profile Update
+        </h2>
     </section>
 
 
-<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" id="titles">
+                <h3>PERSONAL DETAILS</h3>
+            </div>
 
-    <div class="row">
-                
-                <div class="col-md-12" id="titles" >
-                    <h3>PERSONAL DETAILS</h3>
+            <div class="col-md-6">
+                <div class="card">
+                    <form name="personalEmailUpdate" method="post" action="#">
+                        <label for="personalEmail">Personal Email</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+
+                            <!-- Main input area -->
+                            <input class="form-control" type="text" id="personalEmail" name="personalEmail"
+                                placeholder="mail ID" onkeyup="validateEmail()">
+
+                        </div>
+                        <input class="btn btn-secondary" type="button" value="Update" onclick="sendEmailData()">
+
+                        <p id="validateEmail" style="display: none;"></p>
+
+                        <p id="msg"></p>
+                    </form>
                 </div>
+            </div>
 
 
+            <div class="col-md-6">
+                <div class="card">
+                    <form name="phoneNoUpdate" method="post" action="#">
+                        <label for="phoneNo">Phone Number</label>
 
-        
-                <div class="col-md-6">
-                    
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
 
-                    <div class="card">
-                                <form name="personalEmailUpdate" method="post" action="#">
-                                    <label for="personalEmail">Personal Email</label>
-                                    <div class="input-group">            
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <!-- Main input area -->
+                            <input class="form-control" type="text" id="phoneNo" name="phoneNo" placeholder="Phone No."
+                                onkeyup="validatePhoneNo()">
+                        </div>
 
-                                        <!-- Main input area -->
-                                        <input class="form-control" type="text" id="personalEmail" name="personalEmail" placeholder="mail ID" onchange="validateEmail()" >
+                        <input class="btn btn-secondary" type="button" value="Update" onclick="phonenoUpdate()">
+                        <p id="PhoneNovalidation" style="display:none;"></p>
 
-                                    </div>
-                                    <input class="btn btn-secondary" type="button" value="Update" onclick="sendEmailData()">
-
-                                    <p id="validateEmail" style="display: none;"></p>
-                                    <p id="msg"></p>
-                                </form>
-                    </div>
+                        <p id="msg1"></p>
+                    </form>
                 </div>
+            </div>
 
 
+            <div class="col-md-6" id="grid-adjust">
+                <div class="card" id="des-card">
+                    <form name="descriptionUpdate" method="post" action="#">
+                        <label for="description">Description</label>
 
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
 
+                            <!-- Main input area -->
+                            <textarea class="form-control" id="description" placeholder="About me" name="description"
+                                maxlength="200"></textarea>
 
-                <div class="col-md-6">
-                    <div class="card">
-                                <form name="phoneNoUpdate" method="post" action="#">
-                                    <label for="phoneNo">Phone Number</label>
+                        </div>
+                        <input class="btn btn-secondary" type="button" value="Update" onclick="DescriptionUpdate()">
 
-                                    <div class="input-group">
-
-                            
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-
-                                        <!-- Main input area -->
-                                        <input class="form-control" type="text" id="phoneNo" name="phoneNo" placeholder="Phone No." onchange="validatePhoneNo()" >
-
-                                    </div>
-
-                                    <input class="btn btn-secondary" type="button" value="Update" onclick="phonenoUpdate()">
-                                    <p id="PhoneNovalidation" style="display:none;"></p>
-                                    
-                                    <p id="msg1"></p>
-                                </form>
-                    </div>
+                        <p id="msg2"></p>
+                    </form>
                 </div>
+            </div>
 
 
+            <div class="col-md-6" id="grid-adjust1">
+                <div class="card" id="lin-card">
+                    <form name="linkedInUpdate" method="post" action="#">
+                        <label for="linkedIn">LinkedIn Link</label>
 
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-paperclip"></i></span>
 
+                            <!-- Main input area -->
+                            <input class="form-control" type="text" id="linkedIn" placeholder="LinkedIn ID"
+                                name="linkedIn" onkeyup="validatelinkedInlink()">
+                        </div>
+                        <input id="lin-button" class="btn btn-secondary" type="button" value="Update"
+                            onclick="linkedInDataSend()">
 
-                <div class="col-md-6" id="grid-adjust">
-                    <div class="card" id="des-card">
-                                <form name="descriptionUpdate" method="post" action="#">
-                                    <label for="description">Description</label>
+                        <p id="linkedInvalidation" style="display:none;"></p>
 
-                                    <div class="input-group">
-
-                            
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
-
-                                        <!-- Main input area -->
-                                        <textarea class="form-control"  id="description" placeholder="About me" name="description" maxlength = "200"></textarea>
-
-                                       
-                                    </div>
-                                    <input class="btn btn-secondary" type="button" value="Update" onclick="DescriptionUpdate()">
-
-                                    
-                                    
-                                    <p id="msg2"></p>
-                                </form>
-                    </div>
+                        <p id="msg3"></p>
+                    </form>
                 </div>
+            </div>
 
 
 
 
 
 
-                <div class="col-md-6" id="grid-adjust1">
-                    <div class="card" id="lin-card">
-                                <form name="linkedInUpdate" method="post" action="#">
-                                    <label for="linkedIn">LinkedIn Link</label>
+            <div class="col-md-12" id="titles">
+                <h3>UPDATE COLLEGE DETAILS</h3>
+            </div>
 
+            <div class="col-md-6">
+                <div class="card" id="sem-card">
+                    <form name="yearsemUpdate" method="post" action="#">
+                        <label for="sem">Semester</label>
 
-                                    <div class="input-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
 
-                            
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-paperclip"></i></span>
+                            <!-- Main input area -->
+                            <select class="form-control" id="sem" name="sem">
+                                <option value="none">Select semester</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
 
-                                        <!-- Main input area -->
-                                        <input class="form-control" type="text" id="linkedIn" placeholder="LinkedIn ID" name="linkedIn" onchange="validatelinkedInlink()">
+                        </div>
+                        <input id="sem-button" class="btn btn-secondary" type="button" value="Update"
+                            onclick="YearsemUpdate()">
 
-                                        
-                                    </div>
-                                    <input id="lin-button" class="btn btn-secondary" type="button" value="Update" onclick="linkedInDataSend()">
-
-                                    
-                                    <p id="linkedInvalidation" style="display:none;"></p>
-                                    
-                                    <p id="msg3"></p>
-                                </form>
-
-                    </div>  
-
+                        <p id="msg4"></p>
+                    </form>
                 </div>
-                   
+            </div>
 
-                <div class="col-md-12" id="titles">
-                    <h3>UPDATE COLLEGE DETAILS</h3>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <form name="skillupdate" method="post" action="#">
+                        <label for="skill">Skills</label>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+
+                            <!-- Main input area -->
+                            <select class="form-control" id="skill" name="skill" onchange="addSkill()">
+                                <option value="AI">AI</option>
+                                <option value="Web Development">Web Developement</option>
+                                <option value="ML">ML</option>
+                                <option value="Deep Learning">Deep Learning</option>
+                                <option value="Android">Android</option>
+                            </select>
+                        </div>
+
+                        <p id="skill-box">Selected skill will show here..</p>
+                        <div id="skillset"></div>
+                        <input class="btn btn-secondary" type="button" value="Update" onclick="skillUpdate()">
+                        <p id="msg5"></p>
+                    </form>
                 </div>
+                <br>
+            </div>
 
 
-        
-                <div class="col-md-6">
-                    <div class="card" id="sem-card">
-                                <form name="yearsemUpdate" method="post" action="#">
-                                    <label for="sem">Semester</label>
 
 
-                                    <div class="input-group">
 
-                            
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+            <div class="col-md-12" id="titles">
+                <h3>UPDATE PASSWORD</h3>
+            </div>
 
-                                        <!-- Main input area -->
-                                        <select class="form-control" id="sem" name="sem">
-                                        <option value="none">Select semester</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        </select>
+            <div class="col-md-12">
+                <div class="card" id=up-pass>
+                    <form name="passwordUpdate" method="post" action="#">
+                        <label for="password">OLD PASSWORD</label>
 
-                                    </div>
-                                    <input id="sem-button" class="btn btn-secondary" type="button" value="Update" onclick="YearsemUpdate()">
-                                    
-                                    
-                                    <p id="msg4"></p>
-                                </form>
-                    </div>
+                        <div class="input-group">
+
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+                            <!-- Main input area -->
+                            <input class="form-control" type="text" placeholder="Old Password" id="password"
+                                name="password">
+                        </div>
+
+                        <br>
+                        <label for="newPassword">NEW PASSWORD</label>
+                        <div class="input-group">
+
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
+
+                            <!-- Main input area -->
+                            <input class="form-control" type="text" placeholder="New Password" id="newPassword"
+                                name="newPassword">
+                        </div>
+
+                        <input class="btn btn-secondary" type="button" value="Confirm" id="password-button"
+                            onclick="sendPasswordData()">
+                        <p id="msg6"></p>
+                    </form>
                 </div>
+            </div>
+        </div>
+    </div>
 
-
-
-
-
-                <div class="col-md-6">
-                    <div class="card">
-                                <form name="skillupdate" method="post" action="#">
-                                    <label for="skill">Skills</label>
-
-
-                                    <div class="input-group">
-
-                            
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
-
-                                        <!-- Main input area -->
-                                        <select class="form-control" id="skill" name="skill" onchange="addSkill()">
-                                        <option value = "AI">AI</option>
-                                        <option value = "Web Development">Web Developement</option>
-                                        <option value = "ML">ML</option>
-                                        <option value = "Deep Learning">Deep Learning</option>
-                                        <option value = "Android">Android</option>
-                                        </select>
-
-                                    </div>
-
-                                    
-                                    <p id="skill-box">Selected skill will show here..</p>
-                                    <div id="skillset"></div>
-                                    <input class="btn btn-secondary" type="button" value="Update" onclick="skillUpdate()">
-                                    <p id="msg5"></p>
-                                </form>
-                    </div>
-                   <br>
-                </div>
-        
-
-
-
-
-
-
-
-                <div class="col-md-12" id="titles">
-                    <h3>UPDATE PASSWORD</h3>
-                </div>
-
-
-        
-                <div class="col-md-12">
-                    <div class="card" id=up-pass >
-                                <form name="passwordUpdate" method="post" action="#">
-                                    <label for="password">OLD PASSWORD</label>
-
-
-                                    <div class="input-group">
-
-                            
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-
-                                        <!-- Main input area -->
-                                        <input class="form-control" type="text" placeholder="Old Password"  id="password" name="password">
-                                    </div>
-                                    
-                                    <br>
-                                    <label for="newPassword">NEW PASSWORD</label>
-                                    <div class="input-group">
-
-                            
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
-
-                                        <!-- Main input area -->
-                                        <input class="form-control" type="text"placeholder="New Password" id="newPassword" name="newPassword">
-                                    </div>
-                                    
-
-
-                                    
-                                    <input class="btn btn-secondary" type="button" value="Confirm" id="password-button" onclick="sendPasswordData()">
-                                    <p id="msg6"></p>
-                                </form>
-                    </div>
-                </div>
-       
-
-</div>
-</div>
 </body>
-
 </html>
